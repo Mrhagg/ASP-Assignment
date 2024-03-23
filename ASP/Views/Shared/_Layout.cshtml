@@ -17,9 +17,9 @@
                 <a id="logo" asp-controller="Home" asp-action="Index"><img src="~/images/Silicion-light-theme-logo.svg" alt=""></a>
                 <div id="menu">
                     <nav>
-                        <a class="menu-link" href="#overview">Overview</a>
-                        <a class="menu-link" href="#features">Features</a>
-                        <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+                        <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
+                        <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+                        <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="contact">Contact</a>
                     </nav>
                 </div>
                 <div class="btn-switch">
@@ -45,7 +45,7 @@
 
         <footer>
             <div class="container">
-                <div class="social-media">
+                <div class= "@((ViewContext.RouteData.Values["Controller"]!.ToString() == "Auth") ? "d-none" : "social-media")>
                     <a class="btn-social" href="#"><i class="fa-brands fa-facebook"></i></a>
                     <a class="btn-social" href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
                     <a class="btn-social" href="#"><i class="fa-brands fa-square-instagram"></i></a>
