@@ -17,7 +17,9 @@ public class AuthController : Controller
     [HttpPost]
     public IActionResult SignUp(SignUpViewModel viewModel)
     {
-       
+       if(!ModelState.IsValid)
         return View(viewModel);
+
+       return RedirectToAction("SignIn", "Auth");
     }
 }
