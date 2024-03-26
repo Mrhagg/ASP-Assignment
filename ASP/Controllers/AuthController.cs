@@ -41,6 +41,7 @@ public class AuthController : Controller
         if (!ModelState.IsValid)
             return View(viewModel);
         
+        
        
         viewModel.ErrorMessage = "Incorrect email or password";
         return View(viewModel);
