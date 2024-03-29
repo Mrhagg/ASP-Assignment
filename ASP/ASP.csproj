@@ -9,10 +9,15 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\js\validations.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="wwwroot\js\validations.js" />
   </ItemGroup>
 
   <ItemGroup>
