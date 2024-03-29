@@ -17,7 +17,7 @@ const formErrorHandler = (element, validationResult) => {
 
 
 const textValidator = (element, minLength = 2) => {
-    
+  
     if (element.value.length >= minLength) {
         formErrorHandler(element, true)
     }
@@ -27,7 +27,7 @@ const textValidator = (element, minLength = 2) => {
 }
 
 const emailValidator = (element) => {
-    const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*@).{8,}$/
+    const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@.])(.{8,})$/;
     formErrorHandler(element, regEx.test(element.value))
 }
 
