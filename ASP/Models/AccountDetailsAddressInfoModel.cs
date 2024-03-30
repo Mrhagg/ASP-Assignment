@@ -4,25 +4,30 @@ namespace ASP.Models;
 
 public class AccountDetailsAddressInfoModel
 {
-    [Display(Name = "First Name", Prompt = "Enter your first name", Order = 0)]
+
+    [DataType(DataType.Text)]
+    [Display(Name = "First Name", Prompt = "Enter your first name")]
     [Required(ErrorMessage = "First name is required")]
+    [MinLength(2, ErrorMessage = "First name is required")]
     public string Addressline_1 { get; set; } = null!;
 
 
-    [Display(Name = "Last Name", Prompt = "Enter your last name", Order = 1)]
+    [DataType(DataType.Text)]
+    [Display(Name = "Last Name", Prompt = "Enter your last name")]
     [Required(ErrorMessage = "Last name is required")]
+    [MinLength(2, ErrorMessage = "Last name is required")]
 
     public string? Addressline_2 { get; set; }
 
-    [Display(Name = "Postal code", Prompt = "Enter your postal code", Order = 2)]
+    [DataType(DataType.PostalCode)] 
+    [Display(Name = "Postal code", Prompt = "Enter your postal code")]
     [Required(ErrorMessage = "Postal code is required")]
-    [DataType(DataType.PostalCode)]
+
     public string PostalCode { get; set; } = null!;
 
 
-    [Display(Name = "City", Prompt = "Enter your city", Order = 3)]
+    [DataType(DataType.Text)]
+    [Display(Name = "City", Prompt = "Enter your city")]
     [Required(ErrorMessage = "City is required")]
-
-
     public string City { get; set; } = null!;
 }

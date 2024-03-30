@@ -33,8 +33,12 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult AddressInfo(AccountDetailsViewModel viewModel)
     {
-        //_accountService.SaveAddressInfo(viewModel.AddressInfo);
+        if (!ModelState.IsValid)
+            return View(viewModel);
 
         return RedirectToAction(nameof(Details));
+        //_accountService.SaveAddressInfo(viewModel.AddressInfo);
+
+
     }
 }

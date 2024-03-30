@@ -19,7 +19,7 @@ const formErrorHandler = (element, validationResult) => {
 
 
 const textValidator = (element, minLength = 2) => {
-  
+
     if (element.value.length >= minLength) {
         formErrorHandler(element, true)
     }
@@ -33,21 +33,6 @@ const emailValidator = (element) => {
     formErrorHandler(element, regEx.test(element.value))
 }
 
-const passwordValidator = (element) => {
-    if (element.dataset.valEqualtoOther !== undefined) {
-        let password = document.getElementsByName(element.dataset.valEqualtoOther.replace('*', 'Form'))[0].value
-
-        if (element.value === password)
-            formErrorHandler(element, true)
-
-        else
-            formErrorHandler(element, false)
-    }
-    else {
-        const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}|:\"<>?]).{6,}$/
-        formErrorHandler(element, regEx.test(element.value))
-    }
-}
 
 const postalCodeValidator = (element) => {
     const regEx = /^\d{5}(?:[-\s]\d{4})?$/;
@@ -55,61 +40,41 @@ const postalCodeValidator = (element) => {
 }
 
 const phoneValidator = (element) => {
-    const regEx = /^\d{10}$/; 
+    const regEx = /^\d{10}$/;
     formErrorHandler(element, regEx.test(element.value))
 }
 
 
-const checkboxValidator = (element) => {
-    if (element.checked) 
-        formErrorHandler(element, true)
-    else 
-        formErrorHandler(element, false)
-}
+let forms = document.querySelectorAll('form');
 
-
-
-let forms = document.querySelectorAll('form')
-
+// Loop through each form
 forms.forEach(form => {
-    let inputs = form.querySelectorAll('input, textarea')
-    
+    // Get all inputs and textareas in the current form
+    let inputs = form.querySelectorAll('input, textarea');
+
+    // Loop through each input
     inputs.forEach(input => {
+        // Check if input has validation enabled
         if (input.dataset.val === 'true') {
-    
-            if (input.type === 'checkbox') {
-                input.addEventListener('change', (e) => {
-                    checkboxValidator(e.target)
-                })
-            }
-            else {
-    
+            // Attach appropriate event listeners based on input type
+            if (input.type === 'text' || input.type === 'email' || input.type === 'tel' || input.type === 'postal') {
                 input.addEventListener('keyup', (e) => {
-    
                     switch (e.target.type) {
-    
                         case 'text':
-                            textValidator(e.target)
+                            textValidator(e.target);
                             break;
-    
                         case 'email':
-                            emailValidator(e.target)
+                            emailValidator(e.target);
                             break;
-    
-                        case 'password':
-                            passwordValidator(e.target)
-                            break;
-
-                        case 'postal':
-                        postalCodeValidator(e.target)
-                        break;
-
                         case 'tel':
-                        phoneValidator(e.target)
-                         break;
+                            phoneValidator(e.target);
+                            break;
+                        case 'postal':
+                            postalCodeValidator(e.target);
+                            break;
                     }
-                })
+                });
             }
         }
-    })
-})
+    });
+});
