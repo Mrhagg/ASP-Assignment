@@ -1,49 +1,103 @@
-﻿using ASP.ViewModels;
+﻿using ASP.Contexts;
+using ASP.Entities;
+using ASP.Models;
+using ASP.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASP.Controllers;
 
-public class AuthController : Controller
+public class AuthController(ApplicationContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) : Controller
 {
-    [Route ("/signup")]
-    [HttpGet]
-   public IActionResult SignUp()
+    private readonly ApplicationContext _context = context;
+    private readonly UserManager<ApplicationUser> _userManager = userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager = signInManager;
+
+
+
+    [Route("/signup")]
+    public IActionResult SignUp()
     {
         var viewModel = new SignUpViewModel();
         return View(viewModel);
     }
 
-    [Route("/signup")]
+
+
+
     [HttpPost]
-    public IActionResult SignUp(SignUpViewModel viewModel)
+    [Route("/signup")]
+   
+    public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
     {
-       if(!ModelState.IsValid)
+
+        if (ModelState.IsValid)
+        {
+            if (!await _context.Users.AnyAsync(x => x.Email == viewModel.Form.Email))
+            {
+                var applicationUser = new ApplicationUser
+                {
+                    FirstName = viewModel.Form.FirstName,
+                    LastName = viewModel.Form.LastName,
+                    Email = viewModel.Form.Email,
+                    UserName = viewModel.Form.Email
+                };
+
+
+                var result = await _userManager.CreateAsync(applicationUser, viewModel.Form.Password);
+                if (result.Succeeded)
+                {
+                   
+                    return RedirectToAction("SignIn", "Auth");
+                }
+                else
+                {
+                    ViewData["StatusMessage"] = "Something went wrong. Try again later.";
+                }
+            }
+            else
+            {
+                ViewData["StatusMessage"] = "User with same email already exists";
+            }
+        }
+
         return View(viewModel);
 
-       return RedirectToAction("SignIn", "Auth");
     }
 
 
 
-
-    [Route("/signin")]
     [HttpGet]
+    [Route("/signin")]
+    
     public IActionResult SignIn()
     {
         var viewModel = new SignInViewModel();
         return View(viewModel);
     }
 
-    [Route("/signin")]
+
+
     [HttpPost]
-    public IActionResult SignIn(SignInViewModel viewModel)
+    [Route("/signin")]
+    
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
     {
-        if (!ModelState.IsValid)
-            return View(viewModel);
-        
-       
+        if (ModelState.IsValid)
+        {
+            var applicationuser = await _userManager.FindByEmailAsync(viewModel.Form.Email);
+            if (applicationuser != null)
+            {
+                var result = await _signInManager.PasswordSignInAsync(applicationuser, viewModel.Form.Password, viewModel.Form.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Account");
+                }
+            }
+        }
         viewModel.ErrorMessage = "Incorrect email or password";
         return View(viewModel);
-        
+
     }
 }

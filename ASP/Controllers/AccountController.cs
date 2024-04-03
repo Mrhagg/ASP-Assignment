@@ -10,17 +10,7 @@ public class AccountController : Controller
         return View();
     }
 
-    public IActionResult SignIn()
-    {
-        ViewData["Title"] = "Sign In";
-        return View();
-    }
-
-    public IActionResult SignUp()
-    {
-        ViewData["Title"] = "Sign Up";
-        return View();
-    }
+   
 
     
 }
