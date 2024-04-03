@@ -92,12 +92,18 @@ public class AuthController(ApplicationContext context, UserManager<ApplicationU
                 var result = await _signInManager.PasswordSignInAsync(applicationuser, viewModel.Form.Password, viewModel.Form.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Account");
+                    return RedirectToAction("Details", "Account");
                 }
             }
         }
         viewModel.ErrorMessage = "Incorrect email or password";
         return View(viewModel);
 
+    }
+
+    public async Task<IActionResult> SignOut()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction ("Index", "Home");
     }
 }

@@ -1,8 +1,11 @@
 ﻿using ASP.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.Controllers;
 
+
+[Authorize]
 public class AccountController : Controller
 {
     //privat readonly AccountService _accountService;
@@ -13,7 +16,8 @@ public class AccountController : Controller
     //}
 
     [Route("/account")]
-    
+
+   
     public IActionResult Details()
     {
         var viewModel = new AccountDetailsViewModel();
