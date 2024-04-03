@@ -40,7 +40,7 @@ public class AuthController(ApplicationContext context, UserManager<ApplicationU
                 {
                     FirstName = viewModel.Form.FirstName,
                     LastName = viewModel.Form.LastName,
-                    Email = viewModel.Form.Email,
+                    Email = viewModel.Form.Email
                     UserName = viewModel.Form.Email
                 };
 
