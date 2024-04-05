@@ -977,6 +977,9 @@ footer .container .social-media {
   margin: 20px;
   text-align: center;
 }
+#account-details aside .profile-info img {
+  width: 30%;
+}
 #account-details aside .profile-info h5 {
   margin-top: 15px;
   margin-bottom: 0;

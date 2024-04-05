@@ -13,7 +13,7 @@ namespace ASP.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     [Migration("20240402162446_Identity")]
-    partial class Identity
+    partial class IdentityAddresses
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

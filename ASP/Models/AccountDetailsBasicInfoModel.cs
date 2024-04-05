@@ -4,9 +4,7 @@ namespace ASP.Models
 {
     public class AccountDetailsBasicInfoModel
     {
-
-        [DataType(DataType.ImageUrl)]
-        public string? ProfileImage { get; set; }
+        public string UserId { get; set; } = null!;
 
 
         [DataType(DataType.Text)]
@@ -22,25 +20,21 @@ namespace ASP.Models
         public string LastName { get; set; } = null!;
 
 
-
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address", Prompt = "Enter your email address")]
         [Required(ErrorMessage = "Email is required")]
-        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Your email address is invalid")]
+       
         public string Email { get; set; } = null!;
 
 
 
-        [Display(Name = "Phone", Prompt = "Enter your Phone")]
+        [Display(Name = "Phone (optional)", Prompt = "Enter your Phone")]
         [DataType(DataType.PhoneNumber)]
-        [Required(ErrorMessage = "Phone is required")]
-        [MinLength(15, ErrorMessage = "Enter a valid didgit")]
-        public string Phone { get; set; } = null!;
-
+        public string? Phone { get; set; } = null!;
 
 
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Bio", Prompt = "Add a short bio...")]
+        [Display(Name = "Bio (optional)", Prompt = "Add a short bio...")]
         public string? Biography { get; set; }
     }
 }

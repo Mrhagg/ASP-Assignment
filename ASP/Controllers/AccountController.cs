@@ -1,48 +1,49 @@
 ﻿using ASP.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.Controllers;
 
-
-[Authorize]
 public class AccountController : Controller
 {
-    //privat readonly AccountService _accountService;
-
-    //public AccountController(AccountService accountService)
-    //{
-    //  _accountService = accountService;
-    //}
-
-    [Route("/account")]
-
-   
+  
+    #region Details
+    [HttpGet]
+    [Route("/account/details")]
     public IActionResult Details()
     {
         var viewModel = new AccountDetailsViewModel();
-        //viewModel.BasicInfo = _accountService.GetBasicInfo();
-        //viewModel.AddressInfo = _accountService.GetAddressInfo();
         return View(viewModel);
     }
+    #endregion
 
+
+    #region [HttpPost] SaveBasicInfo
     [HttpPost]
-    public IActionResult BasicInfo(AccountDetailsViewModel viewModel)
+    public IActionResult SaveBasicInfo(AccountDetailsViewModel viewModel)
     {
-        //_accountService.SaveBasicInfo(viewModel.BasicInfo);
-
-        return RedirectToAction(nameof(Details));
+      if (TryValidateModel(viewModel.BasicInfo))
+        {
+           return RedirectToAction("Index", "Home");
+        }
+      return View("Details", viewModel);
     }
+    #endregion
 
+
+    #region [HttpPost] SaveAddressInfo
     [HttpPost]
-    public IActionResult AddressInfo(AccountDetailsViewModel viewModel)
+    public IActionResult SaveAddressInfo(AccountDetailsViewModel viewModel)
     {
-        if (!ModelState.IsValid)
-            return View(viewModel);
-
-        return RedirectToAction(nameof(Details));
-        //_accountService.SaveAddressInfo(viewModel.AddressInfo);
+        if (TryValidateModel(viewModel.AddressInfo))
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        return View("Details", viewModel);
 
 
     }
+    #endregion
+
+   
+    
 }

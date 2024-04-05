@@ -8,20 +8,21 @@
     <section id="account-details">
         <aside>
             <div class="profile-info">
-                <img src="@Model.BasicInfo.ProfileImage" alt="@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")" />
-                <h5>@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")</h5>
-                <p>@Model.BasicInfo.Email</p>
+                <img src="~/images/bruno.svg" />
+                <h5>William Hägg</h5>
+                <p>William@domain.com</p>
             </div>
 
             <nav>
+
                 <a class="btn-theme-s" asp-controller="Account" asp-action="Details">Account Details</a>
-                <a class="btn-transparent" asp-controller="Account" asp-action="SignOut">Sign out</a>
+                <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut">Sign out</a>
             </nav>
         </aside>
 
         <div class="details">
             <section class="basic-info">
-              <form method="post" asp-controller="Account" asp-action="Basic-Info">
+              <form method="post" asp-controller="Account" asp-action="SaveBasicInfo">
                   <h2>Account Details</h2>
                   <h5>Basic Info</h5>
 
@@ -53,10 +54,11 @@
                         <div id="form-bio" class="input-group">
                             <label asp-for="BasicInfo.Biography"></label>
                             <textarea asp-for="BasicInfo.Biography"></textarea>
+                            <span asp-validation-for="BasicInfo.Biography"></span>
                         </div>
 
                         <div id="form-bio" class="input-group">
-                            <label>Bio <span>(optional)</span></label>
+                            <label>Bio</label>
                             <textarea name="bio" placeholder="Add a short bio..."></textarea>
                         </div>
 
@@ -70,7 +72,7 @@
             </section>
             <hr />
             <section class="address-info">
-                <form method="post" asp-controller="Account" asp-action="AddressInfo"> 
+                <form method="post" asp-controller="Account" asp-action="SaveAddressInfo"> 
                     <h5>Address</h5>
 
                     <div class="content">
@@ -89,7 +91,7 @@
                         <div id="form-postalcode" class="input-group">
                             <label asp-for="AddressInfo.PostalCode"></label>
                             <span asp-validation-for="AddressInfo.PostalCode"></span>
-                            <input type="postal" asp-for="AddressInfo.PostalCode" />
+                            <input type="text" asp-for="AddressInfo.PostalCode" />
                         </div>
 
                         <div id="form-city" class="input-group">

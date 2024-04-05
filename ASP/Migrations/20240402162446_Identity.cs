@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ASP.Migrations
 {
     /// <inheritdoc />
-    public partial class Identity : Migration
+    public partial class IdentityAddresses : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,4 +1,3 @@
-console.log('inne')
 
 const formErrorHandler = (element, validationResult) => {
     let spanElement = document.querySelector(`[data-valmsg-for="${element.name}"]`)
@@ -34,30 +33,21 @@ const emailValidator = (element) => {
 }
 
 
-const postalCodeValidator = (element) => {
-    const regEx = /^\d{5}(?:[-\s]\d{4})?$/;
-    formErrorHandler(element, regEx.test(element.value))
-}
-
-const phoneValidator = (element) => {
-    const regEx = /^\d{10}$/;
-    formErrorHandler(element, regEx.test(element.value))
-}
 
 
 let forms = document.querySelectorAll('form');
 
-// Loop through each form
+
 forms.forEach(form => {
-    // Get all inputs and textareas in the current form
+   
     let inputs = form.querySelectorAll('input, textarea');
 
-    // Loop through each input
+   
     inputs.forEach(input => {
-        // Check if input has validation enabled
+       
         if (input.dataset.val === 'true') {
-            // Attach appropriate event listeners based on input type
-            if (input.type === 'text' || input.type === 'email' || input.type === 'tel' || input.type === 'postal') {
+           
+            if (input.type === 'text' || input.type === 'email' ||  {
                 input.addEventListener('keyup', (e) => {
                     switch (e.target.type) {
                         case 'text':
@@ -66,12 +56,7 @@ forms.forEach(form => {
                         case 'email':
                             emailValidator(e.target);
                             break;
-                        case 'tel':
-                            phoneValidator(e.target);
-                            break;
-                        case 'postal':
-                            postalCodeValidator(e.target);
-                            break;
+                        
                     }
                 });
             }
