@@ -1,6 +1,5 @@
 ﻿using ASP.Contexts;
 using ASP.Entities;
-using ASP.Models;
 using ASP.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +27,7 @@ public class AuthController(ApplicationContext context, UserManager<ApplicationU
 
     [HttpPost]
     [Route("/signup")]
-   
+
     public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
     {
 
@@ -48,7 +47,7 @@ public class AuthController(ApplicationContext context, UserManager<ApplicationU
                 var result = await _userManager.CreateAsync(applicationUser, viewModel.Form.Password);
                 if (result.Succeeded)
                 {
-                   
+
                     return RedirectToAction("SignIn", "Auth");
                 }
                 else
@@ -70,7 +69,7 @@ public class AuthController(ApplicationContext context, UserManager<ApplicationU
 
     [HttpGet]
     [Route("/signin")]
-    
+
     public IActionResult SignIn()
     {
         var viewModel = new SignInViewModel();
@@ -81,7 +80,7 @@ public class AuthController(ApplicationContext context, UserManager<ApplicationU
 
     [HttpPost]
     [Route("/signin")]
-    
+
     public async Task<IActionResult> SignIn(SignInViewModel viewModel)
     {
         if (ModelState.IsValid)
@@ -104,6 +103,6 @@ public class AuthController(ApplicationContext context, UserManager<ApplicationU
     public async Task<IActionResult> SignOut()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction ("Index", "Home");
+        return RedirectToAction("Index", "Home");
     }
 }

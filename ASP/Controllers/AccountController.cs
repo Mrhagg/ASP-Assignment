@@ -1,11 +1,13 @@
 ﻿using ASP.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.Controllers;
 
+[Authorize]
 public class AccountController : Controller
 {
-  
+
     #region Details
     [HttpGet]
     [Route("/account/details")]

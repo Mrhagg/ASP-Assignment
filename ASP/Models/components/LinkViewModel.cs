@@ -6,5 +6,5 @@ public class LinkViewModel
 
     public string ActionName { get; set; } = null!;
 
-    public string Text { get; set; } = null!;   
+    public string Text { get; set; } = null!;
 }

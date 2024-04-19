@@ -6,4 +6,5 @@ namespace ASP.Contexts;
 
 public class ApplicationContext(DbContextOptions<ApplicationContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
+
 }

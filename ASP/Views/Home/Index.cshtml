@@ -1,7 +1,8 @@
-﻿@model HomeIndexViewModel 
+﻿@model HomeIndexViewModel
+
 
 <div id="showcase">
-    @await Html.PartialAsync("~/Views/Shared/Sections/_Showcase.cshtml", Model.Showcase)
+    @await Html.PartialAsync("~/Views/Shared/Sections/_Showcase.cshtml",Model.Showcase)
 </div>
 
 <div id="features">
@@ -23,6 +24,3 @@
 <div id="tools">
     @await Html.PartialAsync("~/Views/Shared/Sections/_Tools.cshtml")
 </div>
-
-
-

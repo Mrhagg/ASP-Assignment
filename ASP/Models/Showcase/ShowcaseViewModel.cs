@@ -14,6 +14,6 @@ public class ShowcaseViewModel
 
     public string? BrandText { get; set; }
 
-    public List <ImageViewModel>? Brands { get; set; }
+    public List<ImageViewModel>? Brands { get; set; }
 
 }

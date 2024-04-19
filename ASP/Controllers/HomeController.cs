@@ -29,9 +29,9 @@ public class HomeController : Controller
                     new() {ImageUrl = "images/Brand3.svg", AltText = "Brand Name 3"},
                     new() {ImageUrl = "images/Brand4.svg", AltText = "Brand Name 4"},
                 ],
-                
-               
-               
+
+
+
             }
         };
 

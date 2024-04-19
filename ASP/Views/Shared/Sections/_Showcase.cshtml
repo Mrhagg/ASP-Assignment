@@ -1,25 +1,25 @@
-﻿@model ShowcaseViewModel 
-
+﻿@model ShowcaseViewModel
 
 <section id="@Model.Id" class="showcase">
-    <img class="bg-image" src="@Model.ShowcaseImage.ImageUrl" alt="@Model.ShowcaseImage.AltText">
-    <div class="container">
-        <div class="showcase-text">
-            <div class="text-holder">
-                <h1>@Model.Title</h1>
-                <p>@Model.Text</p>
-                <a class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link.Text</a>
-            </div>
-            <h6>@Model.BrandText</h6>
-            <div class="brands">
-                @if (Model.Brands != null)
+<img class="bg-image" src="@Model.ShowcaseImage.ImageUrl" alt="@Model.ShowcaseImage.AltText">
+<div class="container">
+    <div class="showcase-text">
+        <div class="text-holder">
+            <h1>@Model.Title</h1>
+            <p>@Model.Text</p>
+            <a class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link.Text</a>
+        </div>
+        <h6>@Model.BrandText</h6>
+        <div class="brands">
+            @if (Model.Brands != null)
+            {
+                foreach (var brand in Model.Brands)
                 {
-                    foreach(var brand in Model.Brands)
-                    {
-                        <img src="@brand.ImageUrl" alt="@brand.AltText">
-                    }
+                    <img src="@brand.ImageUrl" alt="@brand.AltText">
                 }
-            </div>
+            }
         </div>
     </div>
+</div>
 </section>
+
