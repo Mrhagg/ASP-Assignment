@@ -24,3 +24,7 @@
 <div id="tools">
     @await Html.PartialAsync("~/Views/Shared/Sections/_Tools.cshtml")
 </div>
+
+<div id="subscribe">
+    @await Html.PartialAsync("~/Views/Shared/_SubscribeToNewsletter.cshtml", Model.Subscribe)
+</div>

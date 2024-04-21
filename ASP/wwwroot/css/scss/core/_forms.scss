@@ -1,9 +1,15 @@
 form {
     width: 100%;
     display: grid;
+    font-size: 16px;
+    font-weight: 400 !important;
 
     .input-group {
         display: grid;
+
+        input {
+            padding: 12px;
+        }
     }
 
     .checkbox-group {
@@ -74,4 +80,5 @@ form {
             color: $danger;
         }
     }
+
 }
