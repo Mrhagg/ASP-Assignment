@@ -10,6 +10,7 @@
             gap: 1.5rem;
 
             select {
+                border-radius: 20px;
             }
 
             .input-search-group {
@@ -127,6 +128,40 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.work {
+    text-align: left;
+
+    .container {
+        display: flex;
+        align-items: center;
+
+        background-color: #F3F6FF;
+        
+        .content {
+            position: relative;
+            left: 3rem;
+
+            p {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+
+            .skills {
+                color: #6366F1;
+            }
+        }
+
+        .image {
+            position: relative;
+            left: 15rem;
         }
     }
 }

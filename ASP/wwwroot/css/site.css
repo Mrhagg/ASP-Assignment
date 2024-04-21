@@ -936,6 +936,9 @@ footer .container .social-media {
   align-items: center;
   gap: 1.5rem;
 }
+.courses .container #form-filters select {
+  border-radius: 20px;
+}
 .courses .container .header {
   display: flex;
   justify-content: space-between;
@@ -1022,6 +1025,32 @@ footer .container .social-media {
 }
 .courses .container .course-items .course .content .footer .likes {
   margin-right: 5px;
+}
+
+.work {
+  text-align: left;
+}
+.work .container {
+  display: flex;
+  align-items: center;
+  background-color: #F3F6FF;
+}
+.work .container .content {
+  position: relative;
+  left: 3rem;
+}
+.work .container .content p {
+  font-size: 20px;
+}
+.work .container .content h2 {
+  font-size: 30px;
+}
+.work .container .content .skills {
+  color: #6366F1;
+}
+.work .container .image {
+  position: relative;
+  left: 15rem;
 }
 
 #signup {
